@@ -1,23 +1,22 @@
-/* a minimalist set of CSS resets */
-
-/* default to border-box */
-html {
-  box-sizing: border-box;
-  font-size: 16px;
+:root {
+  color-scheme: dark light;
 }
 
-*, *:before, *:after {
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
-/* adjust typography defaults */
 body {
   margin: 1rem;
-  font-family: sans-serif;
-  line-height: 1.5;
+  font-family: system-ui, sans-serif;
 }
 
-/* images and videos max out at full width */
 img,
 video {
   height: auto;
