@@ -89,5 +89,5 @@ async function demoOPFS() {
 demoOPFS();
 
 if ('FileSystemObserver' in self) {
-  import('observer.js')
+  import('./observer.js')
 }
