@@ -18,7 +18,7 @@ function logMessage(message) {
 const callback = async (records, observer) => {  
   for (const record of records) {
     console.log(record.changedHandle.kind)
-    logMessage`The ${record.changedHandle.kind} "${record.changedHandle.name}" was ${record.type}`;
+    logMessage(`The ${record.changedHandle.kind} "${record.changedHandle.name}" was ${record.type}`);
   }
 };
 
