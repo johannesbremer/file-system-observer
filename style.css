@@ -17,8 +17,6 @@ body {
   font-family: system-ui, sans-serif;
 }
 
-img,
-video {
-  height: auto;
-  max-width: 100%;
+pre {
+  color: red;
 }

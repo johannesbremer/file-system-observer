@@ -1,5 +1,6 @@
 async function demoOPFS() {
   const rootHandle = await navigator.storage.getDirectory();
+  await rootHandle.remove({recursive: true}) 
   const loremIpsum =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ';
 
@@ -83,6 +84,6 @@ async function demoOPFS() {
     await import('./observer.js');
     demoOPFS();
   } else {
-    
+    document.querySelector('pre').textContent = '😕 Your browser does not support the File System Observer API';
   }
 })();
