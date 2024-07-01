@@ -43,30 +43,28 @@ async function demoOPFS() {
     const text = loremIpsum.repeat(Math.floor(Math.random() * 20) + 1);
     await writable.write(text);
     await writable.close();
-    logMessage(`Created file: ${fileName}`);
+    logMessage(`✅ Created file "${fileName}"`);
   }
 
   async function deleteFile() {
     const fileHandle = await getRandomFileHandle();
     if (!fileHandle) {
-      logMessage('No files to delete.');
       return;
     }
     await rootHandle.removeEntry(fileHandle.name);
-    logMessage(`Deleted file: ${fileHandle.name}`);
+    logMessage(`🗑️ Deleted file "${fileHandle.name}"`);
   }
 
   async function modifyFile() {
     const fileHandle = await getRandomFileHandle();
     if (!fileHandle) {
-      logMessage('No files to modify.');
       return;
     }
     const writable = await fileHandle.createWritable();
     const text = loremIpsum.repeat(Math.floor(Math.random() * 20) + 1);
     await writable.write(text);
     await writable.close();
-    logMessage(`Modified file: ${fileHandle.name}`);
+    logMessage(`📝 Modified file "${fileHandle.name}"`);
   }
 
   async function performRandomOperation() {
@@ -78,16 +76,13 @@ async function demoOPFS() {
 
   // Perform random operations in an interval
   setInterval(performRandomOperation, 2000); // every 2 seconds
-  // Bootstrap with 10 files
-  for (let i = 0; i <= 10; i++) {
-    setTimeout(() => {
-      createFile();
-    }, i * 10);
+}
+
+(async () => {
+  if ('FileSystemObserver' in self) {
+    await import('./observer.js');
+    demoOPFS();
+  } else {
+    
   }
-}
-
-demoOPFS();
-
-if ('FileSystemObserver' in self) {
-  import('./observer.js')
-}
+})();

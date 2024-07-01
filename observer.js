@@ -15,12 +15,25 @@ function logMessage(message) {
   logContainer.scrollTop = logContainer.scrollHeight;
 }
 
-const callback = async (records, observer) => {  
+const callback = async (records, observer) => {
+  const icons = {
+    created: '✅',
+    modified: '📝',
+    deleted: '🗑️',
+  };
   for (const record of records) {
-    console.log(record.changedHandle.kind)
-    logMessage(`The ${record.changedHandle.kind} "${record.changedHandle.name}" was ${record.type}`);
+    if (record.changedHandle.name.endsWith('.crswap')) {
+      continue;
+    }
+    logMessage(
+      `The ${record.changedHandle.kind} "${record.changedHandle.name}" was ${
+        icons[record.type]
+      } ${record.type}`
+    );
   }
 };
 
-const observer = new FileSystemObserver(callback);
-await observer.observe(await navigator.storage.getDirectory());
+(async () => {
+  const observer = new self.FileSystemObserver(callback);
+  await observer.observe(await navigator.storage.getDirectory());
+})();
