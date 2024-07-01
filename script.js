@@ -72,7 +72,11 @@ async function demoOPFS() {
     const operations = [createFile, deleteFile, modifyFile];
     const randomOperation =
       operations[Math.floor(Math.random() * operations.length)];
-    await randomOperation();
+    try {
+      await randomOperation();
+    } catch {
+      // No op
+    }
   }
 
   // Perform random operations in an interval

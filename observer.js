@@ -18,15 +18,18 @@ function logMessage(message) {
 const callback = async (records, observer) => {
   const icons = {
     created: '✅',
+    appeared: '✅',
     modified: '📝',
     deleted: '🗑️',
+    disappeared: '🗑️',
   };
   for (const record of records) {
+    console.log(record.changedHandle.name);
     if (record.changedHandle.name.endsWith('.crswap')) {
       continue;
     }
     logMessage(
-      `The ${record.changedHandle.kind} "${record.changedHandle.name}" was ${
+      `The ${record.changedHandle.kind} "${record.changedHandle.name}" ${record.type} ${
         icons[record.type]
       } ${record.type}`
     );
