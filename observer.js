@@ -29,7 +29,7 @@ const callback = async (records, observer) => {
       continue;
     }
     logMessage(
-      `The ${record.changedHandle.kind} "${record.changedHandle.name}" ${record.type} ${
+      `The ${record.changedHandle.kind} "${record.changedHandle.name}" ${['modified', 'deleted', 'created'].includes(record.type) ? 'was ' : ''}${
         icons[record.type]
       } ${record.type}`
     );
