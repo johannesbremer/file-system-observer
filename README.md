@@ -1,0 +1,1 @@
+This repository is a fork of a Google demo showcasing Chrome's upcoming File System Observer API. You can explore the [blog post](https://developer.chrome.com/blog/file-system-observer), the [original source code](https://glitch.com/edit/#!/file-system-observer?path=observer.js), and the [live demo](https://file-system-observer.glitch.me/) for more details.
